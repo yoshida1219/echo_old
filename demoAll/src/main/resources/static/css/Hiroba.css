@@ -1,0 +1,163 @@
+@charset "utf-8";
+
+img{
+    max-width: 100%;
+}
+.kari{
+    margin: 2%;
+}
+
+/* 急上昇 */
+.trend{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: antiquewhite;
+    padding: 5%;
+}
+.trendD{
+    width: 25%;
+    padding: 1%;
+    background-color: rgb(255, 177, 75);    
+}
+
+/* 急上昇 */
+.more{
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: rgb(255, 88, 88);
+}
+
+/* スレッド作成 */
+.CreateS{
+    background-color: rgb(173, 120, 50);
+    padding: 30px;
+    width: 400px;
+    margin: auto;
+    text-align: center;
+}
+
+/* カスタムジャンル */
+.CostomJ{
+    background-color: rgb(175, 255, 144);
+    padding: 10px;
+    
+}
+
+
+.janru{
+    background-color: rgb(233, 213, 252);
+    display: flex;
+}
+
+.mesod{
+    background-color: rgb(177, 105, 119);
+    margin: 1%;
+}
+.miru{
+    background-color: cadetblue;
+    text-align: center;
+    width: 30%;
+    margin: auto;
+}
+.miru button, .more button {
+  width: 100%;
+  padding: 20px;
+}
+
+
+/* フォロースレッド欄 */
+.FollowS{
+    background-color: rgb(185, 245, 255);
+}
+
+/* マイスレッド欄 */
+.MyS{
+    background-color: rgb(145, 180, 255);
+}
+
+
+
+/*その他*/
+
+/*タグ付箋*/
+.heading.tag {
+    text-decoration: none;
+    padding: 0.5rem;
+    background: #f7f7f7;
+    border-left: solid 6px #58ad5a;
+    color: #58ad5a;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
+    
+    width: 30%;
+}
+
+
+/*丸いアイコン*/
+
+#yey{
+    float: left;
+}
+
+.icon-circle{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    }
+  
+    .icon-circle img{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+
+
+
+
+.container{
+  display: flex;
+  justify-content: space-between;
+}
+.container-item{
+  background-color: rgb(205, 243, 144);
+  margin: 10px;
+  width: 30%;
+  padding: 10px;
+}
+.container-item-img{
+  border: 1px solid #ccc;
+}
+.container-item-img img{
+  display: block;
+  height: 150px;
+  object-fit: cover;
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

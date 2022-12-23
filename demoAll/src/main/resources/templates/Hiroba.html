@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- コピペ111 -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>卒業テスト</title>
+    <script th:src="@{/js/jquery-3.6.1.min.js}"></script>
+    <link rel="icon" th:href="@{/img/ファビコン/favicon.ico}">
+    <!--==============レイアウトを制御する独自のCSSを読み込み===============-->
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+
+    <link rel="stylesheet" th:href="@{/css/Hiroba.css}" />
+    <link rel="stylesheet" th:href="@{/css/pop.css}">
+
+
+    <link rel="stylesheet" href="./Responsive Modal Popup_files/boxicons.min.css">
+
+
+
+
+
+    <link rel="stylesheet" th:href="@{/reset/ress.min.css}" />
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+    <!-- /111 -->
+</head>
+
+<body>
+
+    <header th:replace="~{commons/layout :: header}"></header>
+
+
+    <main>
+
+
+        <!-- <div class="head">
+            <p>Echo</p>
+        </div> -->
+        <div class="moto">
+            <div class="center">
+
+
+                <div class="head">
+                    <p>Echo</p>
+                </div>
+
+                <div class="kari">
+
+                    <div class="trend">
+
+                        <p>急上昇</p>
+
+                        <div class="container">
+                            <div th:each="obj:${popularmovie}" class="container-item">
+                                <button th:attr="onClick='location.href=\''+@{/Hiroba/RessDatail/{url}?user_id={user_id}&response_id={response_id} (url=${obj.url},user_id=${obj.user_id},response_id=${obj.response_id})} +'\''">
+                                <div class="container-item-img">
+                                    <img th:src="${obj.thumbnail}" alt="">
+                                    <!-- <img th:src="@{img/sample画像/default.jpg}" alt=""> -->
+                                </div>
+                                <p th:text="${obj.user_name}"></p>
+                                <p th:text="${obj.response_name}"></p>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="more">
+                            <button th:attr="onClick='location.href=\''+@{/Hiroba/ThreadList/popularThread}+'\''">もっとみる</button>
+                        </div>
+    
+                    </div>
+
+
+
+
+
+                    <!-- 投稿作成画面　　ポップアップ -->
+                    <div class="modal container">
+
+                        <div class="modal__container " id="modal-container">
+
+                            <div class="modal__content">
+
+
+                                <!-- 中身 -->
+                                <div class="fka"><button
+                                        class="modal__button modal__button-width close-modal">X</button></div>
+
+                                <div class="tweet-1">
+
+
+                                    <div class="formbox">
+                                        <div class="stronger">投稿画面</div>
+                                        <div class="formbody">
+                                            <form method="" accept-charset="Shift_JIS" action="">
+                                                <p><input class="formelem maxwidth" placeholder="メンション（省略可）" name="mail"
+                                                        size="70">
+                                                    <input class="formelem maxwidth" placeholder="動画URL" name="FROM"
+                                                        size="70">
+                                                    <textarea class="formelem maxwidth" placeholder="コメント内容" rows="5"
+                                                        cols="70" wrap="off" name="MESSAGE"></textarea>
+                                                    <input type="hidden" name="bbs" value="">
+                                                    <input type="hidden" name="key" value="">
+                                                    <input type="hidden" name="time" value="">
+                                                    <input class="submitbtn tweebtn" type="submit" value="書き込む"
+                                                        name="submit">
+                                                </p>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="">
+                        <button class="create-sa" id="open-modal2">スレッド作成</button>
+                    </div>
+
+
+                    <div class="MyS">自分の作成スレ一覧
+
+
+                        <div class="mesod">
+                            <p>新着スレ</p>
+                            <div class="container">
+                                <div th:each="obj:${mythread}" th:object="${obj}" class="container-item">
+                                    <button th:attr="onClick='location.href=\''+@{/Hiroba/ThreadDetail?thread_id={thread_id} (thread_id=*{thread_id})} +'\''">
+                                        <div class="container-item-img">
+                                            <img th:src="*{thumbnail}" alt="">
+                                        </div>
+                                        <p th:text="*{thread_name}"></p>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="miru">
+                                <button th:attr="onClick='location.href=\''+@{/Hiroba/ThreadList/myThread}+'\''">もっとみる</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+                    <div class="FollowS">フォロースレッド
+
+
+                        <div class="mesod">
+                            <p>新着スレ</p>
+                            <div class="container">
+                                <div th:each="obj:${followthread}" th:object="${obj}" class="container-item">
+                                    <button th:attr="onClick='location.href=\''+@{/Hiroba/ThreadDetail?thread_id={thread_id} (thread_id=*{thread_id})} +'\''">
+                                        <div class="container-item-img">
+                                            <img th:src="*{thumbnail}" alt="">
+                                        </div>
+                                        <p th:text="*{thread_name}"></p>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="miru">
+                                <button th:attr="onClick='location.href=\''+@{/Hiroba/ThreadList/followThread}+'\''">もっとみる</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="CostomJ">
+                        <p class="heading tag" id="yey">カスタムジャンル</p>
+                        <div class="janru">
+                            <figure class="icon-circle"><img src="https://picsum.photos/id/237/540/540" alt=""></figure>
+                            <figure class="icon-circle"><img src="https://picsum.photos/id/238/540/540" alt=""></figure>
+                            <figure class="icon-circle"><img src="https://picsum.photos/id/239/540/540" alt=""></figure>
+                            <figure class="icon-circle"><img src="https://picsum.photos/id/240/540/540" alt=""></figure>
+                        </div>
+
+                        <div class="mesod">
+                            <p>人気スレ</p>
+                            <div class="container">
+                                <div th:each="obj:${popularthread}" th:object="${obj}" class="container-item ">
+                                    <button th:attr="onClick='location.href=\''+@{/Hiroba/ThreadDetail?thread_id={thread_id} (thread_id=*{thread_id})} +'\''">
+                                        <div class="container-item-img">
+                                            <img th:src="*{thumbnail}" alt="">
+                                        </div>
+                                        <p th:text="*{jenre_name}"></p>
+                                        <p th:text="*{thread_name}"></p>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="miru">
+                                <button th:attr="onClick='location.href=\''+@{/Hiroba/ThreadList/genruThread}+'\''">もっとみる</button>
+                            </div>
+                        </div>
+
+                        <div class="mesod">
+                            <p>新着スレ</p>
+                            <div class="container">
+                                <div th:each="obj:${newthread}" th:object="${obj}" class="container-item ">
+                                    <button th:attr="onClick='location.href=\''+@{/Hiroba/ThreadDetail?thread_id={thread_id} (thread_id=*{thread_id})} +'\''">
+                                        <div class="container-item-img">
+                                            <img th:src="*{thumbnail}" alt="">
+                                        </div>
+                                        <p th:text="*{jenre_name}"></p>
+                                        <p th:text="*{thread_name}"></p>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="miru">
+                                <button th:attr="onClick='location.href=\''+@{/Hiroba/ThreadList/genruThread}+'\''">もっとみる</button>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+
+
+            <!-- 通知エリア（右） -->
+
+            <div class="side" th:replace="~{commons/layout :: side}"></div>
+
+            <!-- /*通知エリア*/ -->
+
+        </div>
+
+
+        <footer th:replace="~{commons/layout :: footer}"></footer>
+
+    </main>
+
+    <script th:src="@{/js/hiroba.js}"></script>
+    <script th:src="@{/js/pop.js}"></script>
+</body>
+
+</html>

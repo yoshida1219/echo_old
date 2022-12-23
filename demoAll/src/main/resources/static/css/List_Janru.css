@@ -1,0 +1,138 @@
+@charset "utf-8";
+
+
+.Janru1{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+.item_ja{
+    border-right: 1px solid;
+    background-color: rgb(233, 233, 233);
+    padding: 0 10px 0 10px ;
+}
+
+.label_ja1{
+    background-color: aquamarine;
+    font-size: 30px;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+.waku1{
+    background-color: rgb(63, 117, 117);
+    padding: 50px;
+    font-size: 30px;
+    margin:  0 auto;
+    text-align: center;
+    width: 50%;
+    display: flex;
+}
+.tag {
+    background-color: coral;
+    margin: 0 auto;
+    padding: 0px 90px;
+}
+
+.content_ja{
+    background-color: rgb(131, 97, 104);
+    padding: 0 100px 0 100px;
+    margin-top: 20px;
+}
+
+
+
+
+
+
+.content_ja{
+  display: flex;
+  justify-content: space-between;
+}
+
+.updateList {
+  display: none;
+}
+
+.container-item{
+  display: flex;
+  background-color: rgb(205, 243, 144);
+  margin: 10px;
+  padding: 10px;
+  width: 100%;
+}
+.container-item-img{
+  border: 1px solid #ccc;
+  width: 30%;
+}
+.container-item-img img{
+  display: block;
+  height: 225px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.container-item-date{
+  width: 70%;
+  padding: 0px 30px 0px 30px ;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* アイコン　ユーザ名 */
+.t1{
+  display: flex;
+  background-color: cornflowerblue;
+  height: 25%;
+}
+.tt1{
+  width: 10%;
+}
+.tt2{
+  width: 90%;
+  margin: auto 0;
+}
+
+.t1 img{
+  max-width: 100%;
+  max-height: 100%;
+}
+/* タイトル */
+.t2{
+  background-color: darksalmon;
+  height: 45%;
+}
+.text-t2{
+  line-height: 50px;
+
+}
+/* 数 */
+.t3{
+  display: flex;
+  background-color: hotpink;
+  height: 20%;
+}
+#t3-p{
+  background-color: rgb(189, 167, 201);
+}
+#t3-p1{
+  background-color: rgb(161, 113, 187);
+}
+#t3-p2{
+  background-color: darkorchid;
+}
+/* ジャンル */
+.t4{
+  background-color: powderblue;
+  height: 10%;
+}

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja" 
+    xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- コピペ111 -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>卒業テスト</title>
+    <script src="js/jquery-3.6.1.min.js"></script>
+    <link rel="icon" th:href="@{/img/ファビコン/favicon.ico}">
+    <!--==============レイアウトを制御する独自のCSSを読み込み===============-->
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+
+
+    <link rel="stylesheet" th:href="@{/css/RessDatail.css}" />
+
+
+    <link rel="stylesheet" th:href="@{/reset/ress.min.css}" />
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+    <!-- /111 -->
+</head>
+
+<body>
+
+    <header>
+        <div class="tit">
+            <img th:src="@{/img/block.png}" class="rogo1">
+        </div>
+        <div class="btn1" id="d">
+            <button>ホーム</button>
+        </div>
+        <div class="btn1">
+            <button>検索</button>
+        </div>
+        <div class="btn1">
+            <button>広場</button>
+        </div>
+        <div class="btn1">
+            <button>マイページ</button>
+        </div>
+        <div class="btn1">
+            <button>DM</button>
+        </div>
+        <div class="btn1">
+            <button>設定</button>
+        </div>
+    </header>
+
+
+    <main>
+
+
+        <!-- <div class="head">
+            <p>Echo</p>
+        </div> -->
+        <div class="moto">
+            <div class="center">
+
+
+                <div class="head">
+                    <p>Echo</p>
+                </div>
+
+                <div class="kari">
+
+
+                    <div class="d1">
+                        <div class="d2">
+
+
+                            <div class="d2-0">
+
+                                <div class="d2-1">
+                                    <!-- 比率：width:1120　height:630 -->
+                                    <!-- th:src="https://www.youtube.com/embed/{url} (url=${obj.url})" -->
+                                    <iframe width="1120" height="630" th:src="@{https://www.youtube.com/embed/{url} (url=${url})}"
+                                        title="YouTube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                </div>
+
+                                <div class="d2-2">
+
+
+                                    <div th:each="obj:${response}" class="d2-2-1">
+
+                                        <p th:text="${obj.user_name}"></p>
+                                        <img th:src="@{/img\logo2.png}">
+                                        
+
+                                    </div>
+
+                                    <div class="d2-2-2">
+                                        <div th:each="obj:${response}"  class="d2-2-2-1">
+                                            いいね<p th:text="${obj.like}"></p>
+                                            共有など<p th:text="${obj.share}"></p>
+                                        </div>
+                                        <div th:each="obj:${response}" class="d2-2-2-2">
+                                            説明
+                                            <p th:text="${obj.response_name}"></p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="d3">
+                                <div th:unless="${#lists.isEmpty(list)}" class="d3-1">
+                                    <div th:each="obj:${list}" class="tuiti">
+                                        <p th:text="${obj.user_name}"></p>
+                                        <p th:text="${obj.comment}"></p>
+                                        <p th:text="${obj.submit_time}"></p>
+                                    </div>
+                                </div>
+                                
+                                <div class="d3-2">
+                                    コメント作成欄
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div th:unless="${#lists.isEmpty(thread)}" class="Resu">
+                        <p>共有スレッド</p>
+                        <div class="Resu1">
+                            <div th:each="obj:${thread}" class="Resu2">
+                                <img th:src="@{/img/bocchi.jpg}">
+                                <p th:text="${obj.thread_name}"></p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+            <!-- 通知エリア（右） -->
+            <div class="side">
+                <div class="light1">
+                    <p>おすすめ</p>
+                    <ul class="osusu">
+                        <li>user</li>
+                        <li>user</li>
+                        <li>user</li>
+                    </ul>
+                    <p>もっと見る</p>
+
+                </div>
+                <div class="light2">
+                    <p>通知</p>
+                    <div class="tuiti">
+                        <p>aiueo</p>
+                    </div>
+                    <div class="tuiti">
+                        <p>aiueo</p>
+                    </div>
+                    <div class="tuiti">
+                        <p>aiueo</p>
+                    </div>
+                    <div class="tuiti">
+                        <p>aiueo</p>
+                    </div>
+                    <div class="tuiti">
+                        <p>aiueo</p>
+                    </div>
+                    <div class="tuiti">
+                        <p>aiueo</p>
+                    </div>
+                    <div class="tuiti">
+                        <p>aiueo</p>
+                    </div>
+                    <div class="tuiti">
+                        <p>aiueo</p>
+                    </div>
+                    <div class="tuiti">
+                        <p>aiueo</p>
+                    </div>
+                    <div class="tuiti">
+                        <p>aiueo</p>
+                    </div>
+                    <div class="tuiti">
+                        <p>aiueo</p>
+                    </div>
+                    <div class="tuiti">
+                        <p>aiueo</p>
+                    </div>
+                </div>
+            </div>
+            <!-- /*通知エリア*/ -->
+
+        </div>
+
+    </main>
+
+
+</body>
+
+</html>

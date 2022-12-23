@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- コピペ111 -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>卒業テスト</title>
+    <script th:src="@{/js/jquery-3.6.1.min.js}"></script>
+    <link rel="icon" th:href="@{/img/ファビコン/favicon.ico}">
+    <!--==============レイアウトを制御する独自のCSSを読み込み===============-->
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+
+
+    <link rel="stylesheet" th:href="@{/css/List_Janru.css}" />
+
+
+    <link rel="stylesheet" th:href="@{/reset/ress.min.css}" />
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+    <!-- /111 -->
+</head>
+
+<body>
+
+    <header th:replace="~{commons/layout :: header}"></header>
+
+
+    <main>
+
+
+        <!-- <div class="head">
+            <p>Echo</p>
+        </div> -->
+        <div class="moto">
+            <div class="center">
+
+
+                <div class="head">
+                    <p>Echo</p>
+                </div>
+
+                <div class="Janru1">
+                    <div class="item_ja"><button>エンタメ</button></div>
+                    <div class="item_ja"><button>音楽</button></div>
+                    <div class="item_ja"><button>スポーツ</button></div>
+                    <div class="item_ja"><button>ゲーム</button></div>
+                    <div class="item_ja"><button>動物</button></div>
+                    <div class="item_ja"><button>美容・健康</button></div>
+                    <div class="item_ja"><button>美術</button></div>
+                    <div class="item_ja"><button>ビジネス・教育</button></div>
+                    <div class="item_ja"><button>料理</button></div>
+                    <div class="item_ja"><button>商品紹介</button></div>
+                    <div class="item_ja"><button>ニュース・政治</button></div>
+                    <div class="item_ja"><button>Vlog</button></div>
+                    <div class="item_ja"><button>自然</button></div>
+                    <div class="item_ja"><button>機械</button></div>
+                    <div class="item_ja"><button>その他</button></div>
+                </div>
+
+
+                <div class="label_ja1">
+                    <p th:text="${title}"></p>
+                </div>
+
+
+                <div class="List_ja">
+
+                    <th:block th:switch="${modeThread}">
+
+                        <!-- 急上昇スレッド　の一覧 -->
+                        <th:block th:case="popularThread">
+                            <div class="waku1">
+                                <div class="tag v">
+                                    <p>今日</p>
+                                </div>
+                                <div class="tag n">
+                                    <p>今週</p>
+                                </div>
+                            </div>
+                        </th:block>
+
+                        <!-- ジャンルごと　の一覧 -->
+                        <th:block th:case="genruThread">
+                            <div class="waku1">
+                                <div class="tag v">
+                                    <p>人気</p>
+                                </div>
+                                <div class="tag n">
+                                    <p>新着</p>
+                                </div>
+                            </div>
+                        </th:block>
+
+                        <!-- 自作, フォロースレッド　の一覧 -->
+                        <th:block th:case="*">
+                            <div class="waku1">
+                                <div class="tag v">
+                                    <p id="updateListBtn">更新あり</p>
+                                </div>
+                                <div class="tag n">
+                                    <p id="registListBtn">登録順</p>
+                                </div>
+                            </div>
+                        </th:block>
+
+                    </th:block>
+
+                <!-- 自作スレッド一覧 -->
+                    <!-- 登録順 -->
+                    <th:block th:unless="${#lists.isEmpty(myThread_OrderByRegist)}">
+                        <div class="content_ja, registList" th:each="obj:${myThread_OrderByRegist}">
+                            <div class="container-item">
+
+                                <div class="container-item-img">
+                                    <img th:src="@{/img/sample画像/hqdefault.jpg}" alt="">
+                                </div>
+        
+                                <div class="container-item-date" >
+
+                                    <!-- アイコン　userName -->
+                                    <div class="t1">
+                                        
+                                        <div class="tt1">
+                                            <img th:src="@{/img/logo2.png}" alt="">
+                                        </div>
+                                        <div class="tt2">
+                                            <p>usernameeeeeeeeeeeeeeeeeeeeee</p>    
+                                        </div>
+                                    </div>
+
+                                    <!-- 動画タイトル -->
+                                    <div class="t2">
+                                        <div class="text-t2">
+                                        <p th:text="${obj.thread_name}">タイトルが入りますああああああああああああああ </p>    
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 数字 -->
+                                    <div class="t3">
+                                        <p id="t3-p">再生数 :</p>
+                                        <p id="t3-p1">いいね :</p>
+                                        <p id="t3-p2">共有 :</p>
+                                    </div>
+
+                                    <!-- ジャンル -->
+                                    <div class="t4">
+                                        <p>ジャンル1</p>    
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
+
+                    <!-- 更新順 -->
+                    <th:block th:unless="${#lists.isEmpty(myThread_OrderByUpdate)}">
+                        <div class="content_ja, updateList" th:each="obj:${myThread_OrderByUpdate}">
+                            <div class="container-item">
+
+                                <div class="container-item-img">
+                                    <img th:src="@{/img/sample画像/hqdefault.jpg}" alt="">
+                                </div>
+        
+                                <div class="container-item-date" >
+
+                                    <!-- アイコン　userName -->
+                                    <div class="t1">
+                                        
+                                        <div class="tt1">
+                                            <img th:src="@{/img/logo2.png}" alt="">
+                                        </div>
+                                        <div class="tt2">
+                                            <p>usernameeeeeeeeeeeeeeeeeeeeee</p>    
+                                        </div>
+                                    </div>
+
+                                    <!-- 動画タイトル -->
+                                    <div class="t2">
+                                        <div class="text-t2">
+                                        <p th:text="${obj.thread_name}">タイトルが入りますああああああああああああああ </p>    
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 数字 -->
+                                    <div class="t3">
+                                        <p id="t3-p">再生数 :</p>
+                                        <p id="t3-p1">いいね :</p>
+                                        <p id="t3-p2">共有 :</p>
+                                    </div>
+
+                                    <!-- ジャンル -->
+                                    <div class="t4">
+                                        <p>ジャンル1</p>    
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
+                <!-- ここまで -->
+
+                <!-- フォローしてるスレッド一覧 -->
+                    <!-- 登録順 -->
+                    <th:block th:unless="${#lists.isEmpty(followThread_OrderByRegist)}">
+                        <div class="content_ja, registList" th:each="obj:${followThread_OrderByRegist}">
+                            <div class="container-item">
+
+                                <div class="container-item-img">
+                                    <img th:src="@{/img/sample画像/hqdefault.jpg}" alt="">
+                                </div>
+        
+                                <div class="container-item-date" >
+
+                                    <!-- アイコン　userName -->
+                                    <div class="t1">
+                                        
+                                        <div class="tt1">
+                                            <img th:src="@{/img/logo2.png}" alt="">
+                                        </div>
+                                        <div class="tt2">
+                                            <p>usernameeeeeeeeeeeeeeeeeeeeee</p>    
+                                        </div>
+                                    </div>
+
+                                    <!-- 動画タイトル -->
+                                    <div class="t2">
+                                        <div class="text-t2">
+                                        <p th:text="${obj.thread_name}">タイトルが入りますああああああああああああああ </p>    
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 数字 -->
+                                    <div class="t3">
+                                        <p id="t3-p">再生数 :</p>
+                                        <p id="t3-p1">いいね :</p>
+                                        <p id="t3-p2">共有 :</p>
+                                    </div>
+
+                                    <!-- ジャンル -->
+                                    <div class="t4">
+                                        <p>ジャンル1</p>    
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
+
+                    <!-- 更新順 -->
+                    <th:block th:unless="${#lists.isEmpty(followThread_OrderByUpdate)}">
+                        <div class="content_ja, updateList" th:each="obj:${followThread_OrderByUpdate}">
+                            <div class="container-item">
+
+                                <div class="container-item-img">
+                                    <img th:src="@{/img/sample画像/hqdefault.jpg}" alt="">
+                                </div>
+        
+                                <div class="container-item-date" >
+
+                                    <!-- アイコン　userName -->
+                                    <div class="t1">
+                                        
+                                        <div class="tt1">
+                                            <img th:src="@{/img/logo2.png}" alt="">
+                                        </div>
+                                        <div class="tt2">
+                                            <p>usernameeeeeeeeeeeeeeeeeeeeee</p>    
+                                        </div>
+                                    </div>
+
+                                    <!-- 動画タイトル -->
+                                    <div class="t2">
+                                        <div class="text-t2">
+                                        <p th:text="${obj.thread_name}">タイトルが入りますああああああああああああああ </p>    
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 数字 -->
+                                    <div class="t3">
+                                        <p id="t3-p">再生数 :</p>
+                                        <p id="t3-p1">いいね :</p>
+                                        <p id="t3-p2">共有 :</p>
+                                    </div>
+
+                                    <!-- ジャンル -->
+                                    <div class="t4">
+                                        <p>ジャンル1</p>    
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
+                <!-- ここまで -->
+
+                <!-- ジャンルスレッド一覧 -->
+                    <!-- 人気順 -->
+                    <th:block th:unless="${#lists.isEmpty(genreThread_OrderByPopular)}">
+                        <div class="content_ja" th:each="obj:${genreThread_OrderByPopular}">
+                            <div class="container-item">
+
+                                <div class="container-item-img">
+                                    <img th:src="@{/img/sample画像/hqdefault.jpg}" alt="">
+                                </div>
+        
+                                <div class="container-item-date" >
+
+                                    <!-- アイコン　userName -->
+                                    <div class="t1">
+                                        
+                                        <div class="tt1">
+                                            <img th:src="@{/img/logo2.png}" alt="">
+                                        </div>
+                                        <div class="tt2">
+                                            <p>usernameeeeeeeeeeeeeeeeeeeeee</p>    
+                                        </div>
+                                    </div>
+
+                                    <!-- 動画タイトル -->
+                                    <div class="t2">
+                                        <div class="text-t2">
+                                        <p th:text="${obj.thread_name}">タイトルが入りますああああああああああああああ </p>    
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 数字 -->
+                                    <div class="t3">
+                                        <p id="t3-p">再生数 :</p>
+                                        <p id="t3-p1">いいね :</p>
+                                        <p id="t3-p2">共有 :</p>
+                                    </div>
+
+                                    <!-- ジャンル -->
+                                    <div class="t4">
+                                        <p>ジャンル1</p>    
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
+                <!-- ここまで -->
+
+                </div>
+
+
+            </div>
+
+
+            <!-- 通知エリア（右） -->
+            <div class="side" th:replace="~{commons/layout :: side}"></div>
+            <!-- /*通知エリア*/ -->
+
+        </div>
+
+        <script th:src="@{/js/threadList.js}"></script>
+
+    </main>
+
+
+</body>
+
+</html>

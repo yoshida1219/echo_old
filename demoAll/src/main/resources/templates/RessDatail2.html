@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- コピペ111 -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>卒業テスト</title>
+    <script th:src="@{/js/jquery-3.6.1.min.js}"></script>
+    <link rel="icon" th:href="@{/img/ファビコン/favicon.ico}">
+    <!--==============レイアウトを制御する独自のCSSを読み込み===============-->
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+
+
+    <link rel="stylesheet" th:href="@{/css/RessDatail2.css}" />
+    <link rel="stylesheet" th:href="@{/css/pop.css}">
+
+
+    <link rel="stylesheet" th:href="@{/reset/ress.min.css}" />
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+    <!-- /111 -->
+</head>
+
+<body>
+
+    <header>
+        <div class="tit">
+            <img th:src="@{/img\block.png}" class="rogo1">
+        </div>
+        <div class="btn1" id="d">
+            <button>ホーム</button>
+        </div>
+        <div class="btn1">
+            <button>検索</button>
+        </div>
+        <div class="btn1">
+            <button>広場</button>
+        </div>
+        <div class="btn1">
+            <button>マイページ</button>
+        </div>
+        <div class="btn1">
+            <button>DM</button>
+        </div>
+        <div class="btn1">
+            <button>設定</button>
+        </div>
+    </header>
+
+
+    <main>
+
+
+        <!-- <div class="head">
+            <p>Echo</p>
+        </div> -->
+        <div class="moto">
+            <div class="center">
+
+                <div class="head">
+                    <p>Echo</p>
+                </div>
+
+                <!-- タイトル -->
+                <div class="tit-1">
+                    <div class="tit-2">
+                        <p th:text="${thread_name}"></p>
+                        <p id="tit-2-ja">ジャンル</p>
+                    </div>
+                    <div class="tit-2-button">
+                        <button>このスレッドをフォロー</button>
+                        <button>投稿</button>
+                        <button>削除</button>
+                    </div>
+                </div>
+
+
+                <!-- ランキング -->
+                <div class="rank-1">
+                    <p>いいねランキング</p>
+
+                    <div class="rank-1-list">
+
+                        <div class="rank-1-video">
+
+                            <!-- 人気順に３つ表示 -->
+                            <th:block th:unless="${#lists.isEmpty(list_popular3)}">
+                                <div class="rank-1-douga" th:each="response, s:${list_popular3}" th:object="${response}">
+
+                                    <div class="samneiru">
+                                        <img th:src="*{thumbnail}" alt="ないぞ">
+                                    </div>
+
+                                    <div class="con23">
+                                        <div class="content2 pp">
+                                            <p class="titl" th:text="*{movie_name}"></p>
+                                        </div>
+                                        <div class="content3">
+                                            <p class="iine">いいね:<span th:text="*{like}"></span></p>
+                                            <p class="iine">共有:<span th:text="*{share}"></span></p>
+                                        </div>
+                                    </div>
+                                    <div class="ranking" >[[${s.count}]]位</div>
+
+                                </div>
+                            </th:block>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- 真ん中　スレ -->
+                <div class="cent-1">
+
+                    <!-- 一覧表示　上が最新 -->
+                    <th:block th:unless="${#lists.isEmpty(list)}">
+                        <div class="TimeLine" th:each="response:${list}" th:object="${response}">
+                            <div class="flec ">
+                                <div class="Frame2">
+                                    <!-- ユーザのアイコン画像 -->
+                                    <img th:src="@{/img\logo2.png}" class="rogo2">
+                                    <p th:text="*{user_name}"></p>
+                                </div>
+                                <div class="Frame3 balloon1-left">
+                                    <button type="button" class="clickshow" onclick="buttonClick()">
+                                        <div class="Content">
+                                            <div class="douga">
+
+                                                <div class="samneiru">
+                                                    <!-- 動画のサムネ画像 -->
+                                                    <img th:src="@{/img/sample画像/default.jpg}" alt="">
+                                                </div>
+
+                                                <div class="con23">
+                                                    <div class="content2">
+                                                        <p class="titl" th:text="*{movie_name}"></p>
+                                                    </div>
+                                                    <div class="content3">
+                                                        <p class="iine">いいね:<span th:text="*{like}"></span></p>
+                                                        <p class="iine">共有:<span th:text="*{share}"></span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="coment">
+                                                <p>コメント欄</p>
+                                                <div class="user">
+                                                    <p th:text="*{response_name}"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
+
+
+
+                </div>
+
+
+                <div class="last-come">
+                    <div class="count-ress">
+                        <p>＜コメント数＞コメント</p>
+                    </div>
+                    <div class="new-ress">
+                        <button>新着レスを表示</button>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <!-- 投稿作成画面　　ポップアップ -->
+                <div class="modal container" th:replace="~{commons/layout :: response_form}"></div>
+
+                
+                <div class="">
+                    <button class=" create-sa" id="open-modal2">スレッド作成</button>
+                </div>
+
+
+
+                
+
+            </div>
+
+            <!-- 通知エリア（右） -->
+
+            <div class="side" th:replace="~{commons/layout :: side}"></div>
+
+            <!-- /*通知エリア*/ -->
+        </div>
+
+
+        <footer th:replace="~{commons/layout :: footer}"></footer>
+
+
+        <!-- <button class="modal__button create-sa" id="open-modal">投稿</button> -->
+        <button id="scroll-to-top-btn">↑</button>
+
+    </main>
+
+
+    <script th:src="@{/js/pop.js}"></script>
+    <script th:src="@{/js/scroll.js}"></script>
+</body>
+
+</html>
